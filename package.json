@@ -1,0 +1,8 @@
+{
+  "name": "vue-advanced",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/geunheejung/vue-advanced.git",
+  "author": "geunheejung <geunhee0212@gmail.com>",
+  "license": "MIT"
+}

@@ -18,6 +18,7 @@ const router = new VueRouter({
     {
       path: "/news",
       component: NewsView,
+      children: [],
     },
     {
       path: "/jobs",
@@ -28,11 +29,11 @@ const router = new VueRouter({
       component: AskView,
     },
     {
-      path: "/item",
+      path: "/item/:id",
       component: ItemView,
     },
     {
-      path: "/user",
+      path: "/user/:username",
       component: UserView,
     },
   ],

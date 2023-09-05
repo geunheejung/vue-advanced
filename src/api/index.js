@@ -9,6 +9,9 @@ const url = {
   news: `/news`,
   ask: "/ask",
   jobs: "/jobs",
+  user: "/user",
+  // /item/13831370.json
+  individualItem: "/item",
 };
 
 // 2. API 함수들을 정리
@@ -43,4 +46,30 @@ const fetchJobsList = async (jobsId) => {
   }
 };
 
-export { fetchNewsList, fetchAskList, fetchJobsList };
+const fetchUserData = async (userName) => {
+  try {
+    const res = await customAxios(`${url.user}/${userName}.json`);
+
+    return res.data;
+  } catch (error) {
+    throw "fetchUserData Error";
+  }
+};
+
+const fetchIndividualItem = async (itemId) => {
+  try {
+    const res = await customAxios(`${url.individualItem}/${itemId}.json`);
+
+    return res.data;
+  } catch (error) {
+    throw "fetchIndividualItem Error";
+  }
+};
+
+export {
+  fetchNewsList,
+  fetchAskList,
+  fetchJobsList,
+  fetchUserData,
+  fetchIndividualItem,
+};

@@ -1,5 +1,11 @@
 import Vuex from "vuex";
-import { fetchJobsList, fetchNewsList, fetchAskList } from "../api";
+import {
+  fetchJobsList,
+  fetchNewsList,
+  fetchAskList,
+  fetchUserData,
+  fetchIndividualItem,
+} from "../api";
 import Vue from "vue";
 
 Vue.use(Vuex);
@@ -8,6 +14,8 @@ export const types = {
   FETCH_NEWS_LIST: "FETCH_NEWS_LIST",
   FETCH_JOBS_LIST: "FETCH_JOBS_LIST",
   FETCH_ASK_LIST: "FETCH_ASK_LIST",
+  FETCH_USER_DATA: "FETCH_USER_DATA",
+  FETCH_INDIVIDUAL_ITEM: "FETCH_INDIVIDUAL_ITEM",
   SET_DATA: "SET_DATA",
 };
 
@@ -35,6 +43,16 @@ const actions = {
 
     context.commit(types.SET_DATA, { key: "askList", data: askList });
   },
+  async [types.FETCH_USER_DATA](context, { data }) {
+    const user = await fetchUserData(data);
+
+    context.commit(types.SET_DATA, { key: "user", data: user });
+  },
+  async [types.FETCH_INDIVIDUAL_ITEM](context, { data }) {
+    const item = await fetchIndividualItem(data);
+
+    context.commit(types.SET_DATA, { key: "item", data: item });
+  },
 };
 
 const store = new Vuex.Store({
@@ -42,6 +60,8 @@ const store = new Vuex.Store({
     newsList: [],
     jobsList: [],
     askList: [],
+    user: {},
+    item: {},
   },
   getters,
   mutations,

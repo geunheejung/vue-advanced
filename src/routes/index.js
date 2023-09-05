@@ -29,7 +29,7 @@ const router = new VueRouter({
       component: AskView,
     },
     {
-      path: "/item/:id",
+      path: "/item",
       component: ItemView,
     },
     {

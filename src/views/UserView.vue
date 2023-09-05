@@ -1,7 +1,5 @@
 <template>
-  <div>
-    {{ user.id }}
-  </div>
+  <div>name: {{ user.id }}</div>
 </template>
 
 <script>
@@ -21,9 +19,7 @@ export default {
 
     dispatch({ type: types.FETCH_USER_DATA, data: username });
   },
-  mounted() {
-    debugger;
-  },
+  mounted() {},
 };
 </script>
 

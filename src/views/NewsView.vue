@@ -1,22 +1,30 @@
 <template>
-  <div>news</div>
+  <div>
+    news
+    <ul>
+      <li v-for="news in newsList" :key="news.id">
+        {{ news.id }}
+        {{ news.title }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
-import axios from "axios";
+import { fetchNewsList } from "../api";
 
 export default {
   name: "NewsView",
   data() {
     return {
-      users: [],
+      newsList: [],
     };
   },
   created() {
     const vm = this;
-    const url = `https://api.hnpwa.com/v0/news/1.json`;
-    axios.get(url).then((res) => {
-      vm.users = res.data;
+
+    fetchNewsList(1).then((news) => {
+      vm.newsList = news;
     });
   },
 };

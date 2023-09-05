@@ -1,30 +1,17 @@
 <template>
-  <ul class="news-list">
-    <li v-for="item in newsList" :key="item.id" class="news-item">
-      <div class="news-points">
-        {{ item.points }}
-      </div>
-      <div>
-        <p class="news-title">
-          <a :href="item.url">
-            {{ item.title }}
-          </a>
-        </p>
-        <small class="link-text">
-          by
-          <router-link :to="`/user/${item.user}`">{{ item.user }}</router-link>
-        </small>
-      </div>
-    </li>
-  </ul>
+  <PostList :list-data="newsList" />
 </template>
 
 <script>
-import { types } from "../store";
 import { mapState } from "vuex";
+import { types } from "../store";
+import PostList from "../components/PostList.vue";
 
 export default {
   name: "NewsView",
+  components: {
+    PostList,
+  },
   computed: {
     ...mapState(["newsList"]),
   },
@@ -34,7 +21,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .news-list {
   display: grid;
   margin: 0;

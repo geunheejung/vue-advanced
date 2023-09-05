@@ -1,17 +1,17 @@
 <template>
-  <div>
-    <p v-for="item in askList" :key="item.id">
-      <router-link :to="item.url">{{ item.title }}</router-link>
-      <small>{{ item.time_ago }} by {{ item.user }}</small>
-    </p>
-  </div>
+  <PostList :list-data="askList" />
 </template>
 
 <script>
-import { types } from "../store";
 import { mapState } from "vuex";
 
+import { types } from "../store";
+import PostList from "../components/PostList.vue";
+
 export default {
+  components: {
+    PostList,
+  },
   computed: {
     ...mapState(["askList"]),
   },

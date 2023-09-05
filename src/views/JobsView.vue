@@ -1,19 +1,17 @@
 <template>
-  <div>
-    <p v-for="item in jobsList" :key="item.id">
-      <a :href="item.url">
-        {{ item.title }}
-      </a>
-      <small>{{ item.domain }}</small>
-    </p>
-  </div>
+  <PostList :list-data="jobsList" />
 </template>
 
 <script>
+import { mapState } from "vuex";
 import { fetchJobsList } from "../api";
 import { types } from "../store";
-import { mapState } from "vuex";
+import PostList from "../components/PostList.vue";
+
 export default {
+  components: {
+    PostList,
+  },
   computed: {
     ...mapState(["jobsList"]),
   },

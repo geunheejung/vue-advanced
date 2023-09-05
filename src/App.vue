@@ -4,18 +4,41 @@
     <transition name="page">
       <router-view />
     </transition>
+    <BaseSpinner :is-spinner="isSpinner" />
   </div>
 </template>
 
 <script>
 import ToolBar from "./components/ToolBar.vue";
 import NewsView from "./views/NewsView.vue";
+import BaseSpinner from "./components/BaseSpinner.vue";
+import bus from "./utils/bus";
 
 export default {
   name: "App",
   components: {
     ToolBar,
     NewsView,
+    BaseSpinner,
+  },
+  data() {
+    return { isSpinner: false };
+  },
+  created() {
+    bus.$on("spinner:start", this.startSpinner);
+    bus.$on("spinner:end", this.endSpinner);
+  },
+  beforeUnmount() {
+    bus.$off("spinner:start", this.startSpinner);
+    bus.$off("spinner:end", this.endSpinner);
+  },
+  methods: {
+    startSpinner() {
+      this.isSpinner = true;
+    },
+    endSpinner() {
+      this.isSpinner = false;
+    },
   },
 };
 </script>

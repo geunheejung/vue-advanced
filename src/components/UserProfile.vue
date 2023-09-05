@@ -13,7 +13,7 @@
       </div>
 
       <p>
-        <slot name="about" />
+        <slot name="karma" />
       </p>
     </div>
   </div>

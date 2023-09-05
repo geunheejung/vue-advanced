@@ -8,8 +8,8 @@
       {{ user.created }}
     </template>
 
-    <template #about>
-      {{ user.about }}
+    <template #karma>
+      {{ user.karma }}
     </template>
   </UserProfile>
 </template>

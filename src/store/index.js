@@ -32,6 +32,8 @@ const actions = {
     const newsList = await fetchNewsList(id);
 
     context.commit(types.SET_DATA, { key: "newsList", data: newsList });
+
+    return newsList;
   },
   async [types.FETCH_JOBS_LIST](context, { id }) {
     const jobsList = await fetchJobsList(id);

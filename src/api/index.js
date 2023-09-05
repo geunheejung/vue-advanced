@@ -14,7 +14,8 @@ const url = {
 // 2. API 함수들을 정리
 const fetchNewsList = async (newsId) => {
   try {
-    const res = await customAxios(`${url.news}/${newsId}.json`);
+    const _url = `${url.news}/${newsId}.json`;
+    const res = await customAxios(_url);
 
     return res.data;
   } catch (error) {

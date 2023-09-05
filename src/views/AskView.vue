@@ -11,16 +11,15 @@
 </template>
 
 <script>
-import { fetchAskList } from "../api";
+import { types } from "../store";
+import { mapState } from "vuex";
+
 export default {
-  data() {
-    return {
-      askList: [],
-    };
+  computed: {
+    ...mapState(["askList"]),
   },
   created() {
-    const vm = this;
-    fetchAskList(1).then((res) => (vm.askList = res));
+    this.$store.dispatch({ type: types.FETCH_ASK_LIST, id: 1 });
   },
 };
 </script>

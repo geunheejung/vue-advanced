@@ -12,15 +12,14 @@
 
 <script>
 import { fetchJobsList } from "../api";
+import { types } from "../store";
+import { mapState } from "vuex";
 export default {
-  data() {
-    return {
-      jobsList: [],
-    };
+  computed: {
+    ...mapState(["jobsList"]),
   },
   created() {
-    const vm = this;
-    fetchJobsList(1).then((res) => (vm.jobsList = res));
+    this.$store.dispatch({ type: types.FETCH_JOBS_LIST, id: 1 });
   },
 };
 </script>

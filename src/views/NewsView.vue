@@ -11,21 +11,16 @@
 </template>
 
 <script>
-import { fetchNewsList } from "../api";
+import { types } from "../store";
+import { mapState } from "vuex";
 
 export default {
   name: "NewsView",
-  data() {
-    return {
-      newsList: [],
-    };
+  computed: {
+    ...mapState(["newsList"]),
   },
   created() {
-    const vm = this;
-
-    fetchNewsList(1).then((news) => {
-      vm.newsList = news;
-    });
+    this.$store.dispatch({ type: types.FETCH_NEWS_LIST, id: 1 });
   },
 };
 </script>

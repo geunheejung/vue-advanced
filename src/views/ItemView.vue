@@ -1,27 +1,46 @@
 <template>
   <div>
-    <section>
-      <!-- 질문 상세 정보 -->
-      <div class="user-info">
-        <div>User</div>
-        <router-link :to="`/user/${item.user}`">{{ item.user }}</router-link>
-      </div>
-      <h2>{{ item.title }}</h2>
-      <div v-html="item.content" />
+    <UserProfile :item="item">
+      <template #id>
+        {{ item.user }}
+      </template>
+      <template #created>
+        {{ item.time_ago }}
+      </template>
+    </UserProfile>
+    <section class="post-container">
+      <p class="title">{{ item.title }}</p>
+      <p class="description">
+        <span class="points">{{ item.points }} points </span>
+        <span class="username">by {{ item.user }}</span>
+        <span class="time">{{ item.time_age }}</span>
+      </p>
+      <p class="content" v-html="item.content" />
     </section>
-    <section>
-      <!-- 질문 댓글 -->
-      <div>사용자 프로필</div>
+    <section class="comment">
+      <div
+        v-for="comment in item.comments"
+        :key="comment.id"
+        class="comment-item"
+      >
+        <p>user : {{ comment.user }} | {{ comment.time_ago }}</p>
+        <p v-html="comment.content" />
+      </div>
     </section>
   </div>
 </template>
 
 <script>
-import { types } from "../store";
 import { mapState } from "vuex";
+import { types } from "../store";
+import UserProfile from "../components/UserProfile.vue";
+
 export default {
   computed: {
     ...mapState(["item"]),
+  },
+  components: {
+    UserProfile,
   },
   created() {
     const {
@@ -40,5 +59,18 @@ export default {
 .user-info {
   display: flex;
   gap: 0.5rem;
+}
+.post-container {
+  display: grid;
+  grid-template-rows: 1.5rem 2rem 1fr;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+.description {
+  font-size: 1rem;
+  color: gray;
 }
 </style>

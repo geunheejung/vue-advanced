@@ -1,13 +1,30 @@
 <template>
-  <div>name: {{ user.id }}</div>
+  <UserProfile :item="user">
+    <template #id>
+      {{ user.id }}
+    </template>
+
+    <template #created>
+      {{ user.created }}
+    </template>
+
+    <template #about>
+      {{ user.about }}
+    </template>
+  </UserProfile>
 </template>
 
 <script>
-import { types } from "../store";
 import { mapState } from "vuex";
+import { types } from "../store";
+import UserProfile from "../components/UserProfile.vue";
+
 export default {
   computed: {
     ...mapState(["user"]),
+  },
+  components: {
+    UserProfile,
   },
   created() {
     const {

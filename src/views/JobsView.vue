@@ -1,12 +1,11 @@
 <template>
   <div>
-    jobs
-    <ul>
-      <li v-for="jobs in jobsList" :key="jobs.id">
-        {{ jobs.id }}
-        {{ jobs.title }}
-      </li>
-    </ul>
+    <p v-for="item in jobsList" :key="item.id">
+      <a :href="item.url">
+        {{ item.title }}
+      </a>
+      <small>{{ item.domain }}</small>
+    </p>
   </div>
 </template>
 

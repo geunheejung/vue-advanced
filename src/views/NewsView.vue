@@ -1,12 +1,11 @@
 <template>
   <div>
-    news
-    <ul>
-      <li v-for="news in newsList" :key="news.id">
-        {{ news.id }}
-        {{ news.title }}
-      </li>
-    </ul>
+    <p v-for="item in newsList" :key="item.id">
+      <a :href="item.url">
+        {{ item.title }}
+      </a>
+      <small>{{ item.time_ago }} by {{ item.user }}</small>
+    </p>
   </div>
 </template>
 

@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Checkbox />
     <tool-bar />
     <transition name="page">
       <router-view />
@@ -13,6 +14,7 @@ import ToolBar from "./components/ToolBar.vue";
 import NewsView from "./views/NewsView.vue";
 import BaseSpinner from "./components/BaseSpinner.vue";
 import ListView from "./views/ListView.vue";
+import Checkbox from "@/containers/Checkbox.vue";
 import bus from "./utils/bus";
 
 export default {
@@ -22,6 +24,7 @@ export default {
     NewsView,
     BaseSpinner,
     ListView,
+    Checkbox,
   },
   data() {
     return { isSpinner: false };

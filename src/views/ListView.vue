@@ -1,17 +1,19 @@
 <template>
-  <PostList :list-data="jobsList" />
+  <div>
+    <post-list :list-data="list" />
+  </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
 import PostList from "../components/PostList.vue";
+import { mapState } from "vuex";
 
 export default {
   components: {
     PostList,
   },
   computed: {
-    ...mapState(["jobsList"]),
+    ...mapState(["list"]),
   },
 };
 </script>

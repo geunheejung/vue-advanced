@@ -5,7 +5,7 @@ const customAxios = axios.create({
 });
 
 // 1. HTTP Request & Response와 관련된 기본 설정
-const url = {
+export const url = {
   news: `/news`,
   ask: "/ask",
   jobs: "/jobs",
@@ -66,10 +66,21 @@ const fetchIndividualItem = async (itemId) => {
   }
 };
 
+const fetchData = async (dataType, itemId = 1) => {
+  try {
+    const res = await customAxios(`${dataType}/${itemId}.json`);
+
+    return res.data;
+  } catch (error) {
+    throw `fetchData error ${error}, ${dataType}`;
+  }
+};
+
 export {
   fetchNewsList,
   fetchAskList,
   fetchJobsList,
   fetchUserData,
   fetchIndividualItem,
+  fetchData,
 };

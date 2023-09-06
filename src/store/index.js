@@ -5,6 +5,7 @@ import {
   fetchAskList,
   fetchUserData,
   fetchIndividualItem,
+  fetchData,
 } from "../api";
 import Vue from "vue";
 
@@ -17,6 +18,7 @@ export const types = {
   FETCH_USER_DATA: "FETCH_USER_DATA",
   FETCH_INDIVIDUAL_ITEM: "FETCH_INDIVIDUAL_ITEM",
   SET_DATA: "SET_DATA",
+  FETCH_DATA: "FETCH_DATA",
 };
 
 const getters = {};
@@ -55,6 +57,12 @@ const actions = {
 
     context.commit(types.SET_DATA, { key: "item", data: item });
   },
+
+  async [types.FETCH_DATA](context, { data: dataKey }) {
+    const data = await fetchData(dataKey);
+
+    context.commit(types.SET_DATA, { key: "list", data });
+  },
 };
 
 const store = new Vuex.Store({
@@ -64,6 +72,7 @@ const store = new Vuex.Store({
     askList: [],
     user: {},
     item: {},
+    list: [],
   },
   getters,
   mutations,

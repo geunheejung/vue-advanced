@@ -5,6 +5,8 @@ import JobsView from "../views/JobsView.vue";
 import AskView from "../views/AskView.vue";
 import ItemView from "../views/ItemView.vue";
 import UserView from "../views/UserView.vue";
+import createListView from "../views/CreateListView";
+import { url } from "@/api";
 
 Vue.use(VueRouter);
 
@@ -17,24 +19,29 @@ const router = new VueRouter({
     },
     {
       path: "/news",
-      component: NewsView,
+      component: createListView("NewsView"),
       children: [],
-    },
-    {
-      path: "/jobs",
-      component: JobsView,
+      name: url.news,
     },
     {
       path: "/ask",
-      component: AskView,
+      component: createListView("AskView"),
+      name: url.ask,
+    },
+    {
+      path: "/jobs",
+      component: createListView("JobsView"),
+      name: url.jobs,
     },
     {
       path: "/item",
       component: ItemView,
+      name: url.individualItem,
     },
     {
       path: "/user/:username",
       component: UserView,
+      name: url.user,
     },
   ],
 });

@@ -1,5 +1,5 @@
 <template>
-  <div class="item-container">
+  <div v-if="item" class="item-container">
     <template v-if="item.points">
       <div class="points">
         {{ item.points }}
@@ -30,6 +30,7 @@
 export default {
   name: "ListItem",
   props: ["item"],
+  created() {},
 };
 </script>
 

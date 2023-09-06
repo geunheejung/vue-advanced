@@ -10,7 +10,6 @@
 
 <script>
 import ToolBar from "./components/ToolBar.vue";
-import NewsView from "./views/NewsView.vue";
 import BaseSpinner from "./components/BaseSpinner.vue";
 import ListView from "./views/ListView.vue";
 import bus from "./utils/bus";
@@ -19,7 +18,6 @@ export default {
   name: "App",
   components: {
     ToolBar,
-    NewsView,
     BaseSpinner,
     ListView,
   },

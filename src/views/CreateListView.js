@@ -6,7 +6,7 @@ import { url } from "@/api";
 export default function createdListView(componentName) {
   return {
     // 재사용할 인스턴스(컴포넌트) 옵션들
-    name: componentName,
+    name: `HOC-${componentName}`,
     created() {
       const { $store, $route } = this;
 

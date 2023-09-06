@@ -1,5 +1,5 @@
 <template>
-  <div v-if="item" class="item-container">
+  <div class="item-container">
     <template v-if="item.points">
       <div class="points">
         {{ item.points }}

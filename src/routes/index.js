@@ -19,18 +19,18 @@ const router = new VueRouter({
     },
     {
       path: "/news",
-      component: createListView("NewsView"),
+      component: NewsView,
       children: [],
       name: url.news,
     },
     {
       path: "/ask",
-      component: createListView("AskView"),
+      component: AskView,
       name: url.ask,
     },
     {
       path: "/jobs",
-      component: createListView("JobsView"),
+      component: JobsView,
       name: url.jobs,
     },
     {

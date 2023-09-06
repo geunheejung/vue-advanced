@@ -1,19 +1,13 @@
 <template>
-  <PostList :list-data="askList" />
+  <PostList :list-data="list" />
 </template>
 
 <script>
-import { mapState } from "vuex";
-
+import ListMixin from "../mixins/ListMixin";
 import PostList from "../components/PostList.vue";
 
 export default {
-  components: {
-    PostList,
-  },
-  computed: {
-    ...mapState(["askList"]),
-  },
+  mixins: [ListMixin],
 };
 </script>
 

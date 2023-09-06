@@ -1,24 +1,13 @@
 <template>
-  <PostList :list-data="newsList" />
+  <PostList :list-data="list" />
 </template>
 
 <script>
-import { mapState } from "vuex";
-import PostList from "../components/PostList.vue";
+import ListMixin from "../mixins/ListMixin";
 
 export default {
   name: "NewsView",
-  components: {
-    PostList,
-  },
-  data() {
-    return {
-      isShow: false,
-    };
-  },
-  computed: {
-    ...mapState(["newsList"]),
-  },
+  mixins: [ListMixin],
 };
 </script>
 

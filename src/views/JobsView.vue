@@ -1,18 +1,12 @@
 <template>
-  <PostList :list-data="jobsList" />
+  <PostList :list-data="list" />
 </template>
 
 <script>
-import { mapState } from "vuex";
-import PostList from "../components/PostList.vue";
+import ListMixin from "../mixins/ListMixin";
 
 export default {
-  components: {
-    PostList,
-  },
-  computed: {
-    ...mapState(["jobsList"]),
-  },
+  mixins: [ListMixin],
 };
 </script>
 
